@@ -47,6 +47,7 @@ public static class Binary
 
     public static string Sum(string firstArgument, string secondArgument)
     {
+        //TODO fix this method
         string result = "";
         if (firstArgument.Length != secondArgument.Length)
         {
