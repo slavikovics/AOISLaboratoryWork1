@@ -14,4 +14,30 @@ public sealed class BinaryTests
         Assert.AreEqual("111011110", Binary.FromUnsignedInt(478));
         Assert.AreEqual("111000", Binary.FromUnsignedInt(56));
     }
+
+    [TestMethod]
+    public void BinaryInvertTest()
+    {
+        Assert.AreEqual("111", Binary.Invert("000"));
+        Assert.AreEqual("101", Binary.Invert("010"));
+        Assert.AreEqual("10001", Binary.Invert("01110"));
+        Assert.AreEqual("10001", Binary.Invert("01110"));
+        Assert.AreEqual("10101", Binary.Invert("01010"));
+    }
+
+    [TestMethod]
+    public void FitInBytesTest()
+    {
+        Assert.AreEqual("00000111", Binary.FitInBytes("111"));
+        Assert.AreEqual("00001010", Binary.FitInBytes("1010"));
+        Assert.AreEqual("00010000", Binary.FitInBytes("10000"));
+        Assert.AreEqual("10010000", Binary.FitInBytes("10010000"));
+    }
+
+    [TestMethod]
+    public void SumTests()
+    {
+        string result = Binary.Sum(Binary.FromUnsignedInt(7), Binary.FromUnsignedInt(156));
+        Assert.AreEqual("10100011", result);
+    }
 }
