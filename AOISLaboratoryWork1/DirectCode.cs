@@ -1,8 +1,8 @@
-﻿namespace AOISLaboratoryWork1;
+﻿using System.Numerics;
+
+namespace AOISLaboratoryWork1;
 
 public class DirectCode
 {
-    public string InitialValue { get; private set; }
-    
-    
+
 }
