@@ -20,6 +20,11 @@ public static class Binary
         return input + result;
     }
 
+    public static int ToUnsignedInt(string input)
+    {
+        return 0;
+    }
+
     public static string Invert(string input)
     {
         string result = "";
