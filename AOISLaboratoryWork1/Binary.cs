@@ -40,9 +40,9 @@ public static class Binary
         return new string('0', numberOfZeroes) + input;
     }
 
-    public static string FitInBytes(string input, int length)
+    public static string FitInBytes(string input, int lengthInBytes)
     {
-        return new string('0', length - input.Length) + input;
+        return new string('0', lengthInBytes - input.Length) + input;
     }
 
     public static string Sum(string firstArgument, string secondArgument)
@@ -58,18 +58,35 @@ public static class Binary
         int memorizedOne = 0;
         for (int i = firstArgument.Length - 1; i >= 0; i--)
         {
-            int iterationResult = Convert.ToInt32(firstArgument[i]) + Convert.ToInt32(secondArgument[i]) + memorizedOne;
-            if (iterationResult <= 1)
+            int iterationResult = Convert.ToInt32(firstArgument.Substring(i, 1)) + Convert.ToInt32(secondArgument.Substring(i, 1)) + memorizedOne;
+            switch (iterationResult)
             {
-                result = iterationResult.ToString() + result;
-                memorizedOne = 0;
-                continue;
+                case 0: memorizedOne = 0;
+                    result = "0" + result;
+                    break;
+                case 1: memorizedOne = 0;
+                    result = "1" + result;
+                    break;
+                case 2: memorizedOne = 1;
+                    result = "0" + result;
+                    break;
+                case 3: memorizedOne = 1;
+                    result = "1" + result;
+                    break;
             }
-            
-            memorizedOne = 1;
-            result = (iterationResult - 2).ToString() + result;
         }
+        if (memorizedOne == 1) result = "1" + result;
 
         return result;
+    }
+
+    public static string Sum(int firstArgument, int secondArgument)
+    {
+        return Sum(Binary.FromUnsignedInt(firstArgument), Binary.FromUnsignedInt(secondArgument));
+    }
+
+    public static string Sum(string firstArgument, int secondArgument)
+    {
+        return Sum(firstArgument, Binary.FromUnsignedInt(secondArgument));
     }
 }
