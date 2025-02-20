@@ -38,25 +38,29 @@ public static class Binary
         return result;
     }
 
-    public static string FitInBytes(string input)
+    public static string FitInBytes(string input, bool isInverted = false)
     {
         int numberOfZeroes = 8 - input.Length % 8;
         if (numberOfZeroes == 8) return input;
+        if (isInverted) return new string('1', numberOfZeroes) + input;
         return new string('0', numberOfZeroes) + input;
     }
 
-    public static string FitInBytes(string input, int lengthInBytes)
+    public static string FitInBytes(string input, int lengthInBytes, bool isInverted = false)
     {
+        if (isInverted) return new string('1', lengthInBytes - input.Length) + input;
         return new string('0', lengthInBytes - input.Length) + input;
     }
 
-    public static string Sum(string firstArgument, string secondArgument)
+    public static string Sum(string firstArgument, string secondArgument, bool isInverted = false)
     {
         string result = "";
         if (firstArgument.Length != secondArgument.Length)
         {
-            firstArgument = FitInBytes(firstArgument, Math.Max(firstArgument.Length, secondArgument.Length));
-            secondArgument = FitInBytes(secondArgument, Math.Max(firstArgument.Length, secondArgument.Length));
+            int finalLength = Math.Max(firstArgument.Length, secondArgument.Length);
+            if (isInverted) finalLength++;
+            firstArgument = FitInBytes(firstArgument, finalLength, isInverted);
+            secondArgument = FitInBytes(secondArgument, finalLength, isInverted);
         }
 
         int memorizedOne = 0;
@@ -79,7 +83,7 @@ public static class Binary
                     break;
             }
         }
-        if (memorizedOne == 1) result = "1" + result;
+        if (memorizedOne == 1 && !isInverted) result = "1" + result;
 
         return result;
     }

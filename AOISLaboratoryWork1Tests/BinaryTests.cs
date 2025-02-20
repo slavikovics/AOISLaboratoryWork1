@@ -60,6 +60,15 @@ public sealed class BinaryTests
 
         result = Binary.Sum(0, 10);
         Assert.AreEqual(result, Binary.FromUnsignedInt(10));
+
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 100; j++)
+            {
+                result = Binary.Sum(i, j);
+                Assert.AreEqual(result, Binary.FromUnsignedInt(i + j));
+            }
+        }
     }
 
     [TestMethod]

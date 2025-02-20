@@ -22,4 +22,23 @@ public sealed class AdditionalCodeTests
             Assert.AreEqual(AdditionalCode.ConvertAdditionalCodeToInteger(AdditionalCode.ConvertIntegerToAdditionalCode(i)), i);
         }
     }
+
+    [TestMethod]
+    public void AdditionalCodeSumTest()
+    {
+        // TODO fix for all numbers + isInverted should represent both numbers (now only negative)
+        Assert.AreEqual(AdditionalCode.ConvertAdditionalCodeToInteger(AdditionalCode.Sum(4, 4)), 8);
+        
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 100; j++)
+            {
+                string firstArgument = AdditionalCode.ConvertIntegerToAdditionalCode(i);
+                string secondArgument = AdditionalCode.ConvertIntegerToAdditionalCode(j);
+                string result = AdditionalCode.Sum(firstArgument, secondArgument);
+                
+                Assert.AreEqual(AdditionalCode.ConvertAdditionalCodeToInteger(result), i + j);
+            }
+        }
+    }
 }
