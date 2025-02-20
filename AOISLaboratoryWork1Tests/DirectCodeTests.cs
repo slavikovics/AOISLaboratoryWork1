@@ -17,6 +17,9 @@ public sealed class DirectCodeTests
     [TestMethod]
     public void ConvertDirectCodeToIntegerTest()
     {
-        
+        for (int i = -10000; i <= 10000; i++)
+        {
+            Assert.AreEqual(DirectCode.ConvertDirectCodeToInteger(DirectCode.ConvertIntegerToDirectCode(i)), i);
+        }
     }
 }

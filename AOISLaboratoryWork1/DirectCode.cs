@@ -11,4 +11,10 @@ public static class DirectCode
         
         return sign + Binary.FromUnsignedInt(input);
     }
+
+    public static int ConvertDirectCodeToInteger(string input)
+    {
+        if (input[0] == '0') return Binary.ConvertBinaryToInteger(input.Substring(1));
+        return Binary.ConvertBinaryToInteger(input.Substring(1)) * -1;
+    }
 }

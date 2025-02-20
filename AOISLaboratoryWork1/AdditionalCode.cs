@@ -1,6 +1,6 @@
 namespace AOISLaboratoryWork1;
 
-public class AdditionalCode
+public static class AdditionalCode
 {
     public static string ConvertIntegerToAdditionalCode(int input)
     {

@@ -52,7 +52,6 @@ public static class Binary
 
     public static string Sum(string firstArgument, string secondArgument)
     {
-        //TODO fix this method
         string result = "";
         if (firstArgument.Length != secondArgument.Length)
         {
@@ -93,5 +92,18 @@ public static class Binary
     public static string Sum(string firstArgument, int secondArgument)
     {
         return Sum(firstArgument, Binary.FromUnsignedInt(secondArgument));
+    }
+
+    public static int ConvertBinaryToInteger(string binary)
+    {
+        int length = binary.Length;
+        int result = 0;
+        
+        for (int i = length - 1; i >= 0; i--)
+        {
+            result += (int)Math.Pow(2, i) * Convert.ToInt32(binary.Substring(length - i - 1, 1));
+        }
+        
+        return result;
     }
 }

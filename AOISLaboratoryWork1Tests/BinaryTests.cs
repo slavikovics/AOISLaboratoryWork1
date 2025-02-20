@@ -61,4 +61,16 @@ public sealed class BinaryTests
         result = Binary.Sum(0, 10);
         Assert.AreEqual(result, Binary.FromUnsignedInt(10));
     }
+
+    [TestMethod]
+    public void ConvertToIntegerTest()
+    {
+        Assert.AreEqual(Binary.ConvertBinaryToInteger("111"), 7);
+        Assert.AreEqual(Binary.ConvertBinaryToInteger("10011100"), 156);
+        Assert.AreEqual(Binary.ConvertBinaryToInteger("10000000000"), 1024);
+        Assert.AreEqual(Binary.ConvertBinaryToInteger("111011110"), 478);
+        Assert.AreEqual(Binary.ConvertBinaryToInteger("111000"), 56);
+        Assert.AreEqual(Binary.ConvertBinaryToInteger("0111000"), 56);
+        Assert.AreEqual(Binary.ConvertBinaryToInteger("000111000"), 56);
+    }
 }
