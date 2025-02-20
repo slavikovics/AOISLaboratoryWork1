@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AOISLaboratoryWork1Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+923bfb96ac891793d457b9863356f8eda1b933b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c0531061f627d8a1564e2506eb85664037d192e")]
 [assembly: System.Reflection.AssemblyProductAttribute("AOISLaboratoryWork1Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AOISLaboratoryWork1Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
