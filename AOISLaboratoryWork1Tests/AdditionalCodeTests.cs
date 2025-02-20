@@ -13,4 +13,13 @@ public sealed class AdditionalCodeTests
         Assert.AreEqual(AdditionalCode.ConvertIntegerToAdditionalCode(4563), "01000111010011");
         Assert.AreEqual(AdditionalCode.ConvertIntegerToAdditionalCode(-4563), "10111000101101");
     }
+
+    [TestMethod]
+    public void ConvertAdditionalCodeToIntegerTest()
+    {
+        for (int i = -10000; i < 10000; i++)
+        {
+            Assert.AreEqual(AdditionalCode.ConvertAdditionalCodeToInteger(AdditionalCode.ConvertIntegerToAdditionalCode(i)), i);
+        }
+    }
 }
