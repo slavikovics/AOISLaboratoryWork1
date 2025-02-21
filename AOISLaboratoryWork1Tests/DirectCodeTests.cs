@@ -22,4 +22,33 @@ public sealed class DirectCodeTests
             Assert.AreEqual(DirectCode.ConvertDirectCodeToInteger(DirectCode.ConvertIntegerToDirectCode(i)), i);
         }
     }
+
+    [TestMethod]
+    public void MultiplicationTest()
+    {
+        Assert.AreEqual(DirectCode.Multiplication("10001010", "10001010"), "01100100");
+        
+        for (int i = -100; i <= 100; i++)
+        {
+            for (int j = -100; j <= 100; j++)
+            {
+                Assert.AreEqual(DirectCode.ConvertDirectCodeToInteger(DirectCode.Multiplication(i, j)), i * j);
+            }
+        }
+    }
+
+    [TestMethod]
+    public void FindDigitsNumberTest()
+    {
+        Assert.AreEqual(DirectCode.FindDigitsNumber(100), 3);
+        Assert.AreEqual(DirectCode.FindDigitsNumber(1), 1);
+        Assert.AreEqual(DirectCode.FindDigitsNumber(567), 3);
+        Assert.AreEqual(DirectCode.FindDigitsNumber(4444), 4);
+    }
+
+    [TestMethod]
+    public void DivisionTest()
+    {
+        double result = DirectCode.Division(1101, 10);
+    }
 }
