@@ -29,9 +29,9 @@ public sealed class AdditionalCodeTests
         // TODO fix for all numbers + isInverted should represent both numbers (now only negative)
         Assert.AreEqual(AdditionalCode.ConvertAdditionalCodeToInteger(AdditionalCode.Sum(4, 4)), 8);
         
-        for (int i = -100; i < 0; i++)
+        for (int i = -100; i < 100; i++)
         {
-            for (int j = -100; j < 0; j++)
+            for (int j = -100; j < 100; j++)
             {
                 string firstArgument = AdditionalCode.ConvertIntegerToAdditionalCode(i);
                 string secondArgument = AdditionalCode.ConvertIntegerToAdditionalCode(j);

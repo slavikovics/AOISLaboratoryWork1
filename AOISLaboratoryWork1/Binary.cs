@@ -20,11 +20,6 @@ public static class Binary
         return input + result;
     }
 
-    public static int ToUnsignedInt(string input)
-    {
-        return 0;
-    }
-
     public static string Invert(string input)
     {
         string result = "";
@@ -48,7 +43,7 @@ public static class Binary
 
     public static string FitInBytes(string input, int lengthInBytes, bool isInverted = false)
     {
-        if (isInverted) return new string('1', lengthInBytes - input.Length) + input;
+        if (isInverted) return new string(input[0], lengthInBytes - input.Length) + input;
         return new string('0', lengthInBytes - input.Length) + input;
     }
 
