@@ -55,7 +55,7 @@ public static class Binary
     public static string Sum(string firstArgument, string secondArgument, bool isInverted = false)
     {
         string result = "";
-        if (firstArgument.Length != secondArgument.Length)
+        if (firstArgument.Length != secondArgument.Length || isInverted)
         {
             int finalLength = Math.Max(firstArgument.Length, secondArgument.Length);
             if (isInverted) finalLength++;
