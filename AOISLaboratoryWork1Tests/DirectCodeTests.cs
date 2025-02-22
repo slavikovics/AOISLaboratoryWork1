@@ -56,8 +56,40 @@ public sealed class DirectCodeTests
     [TestMethod]
     public void DivisionTest()
     {
-        string result1 = DirectCode.Divide(Binary.FromUnsignedInt(8), Binary.FromUnsignedInt(2));
-        string result2 = DirectCode.Divide(Binary.FromUnsignedInt(56), Binary.FromUnsignedInt(24));
-        string result3 = DirectCode.Divide("1010","10");
+        string result = DirectCode.Divide(Binary.FromUnsignedInt(8), Binary.FromUnsignedInt(2));
+        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)4.00000);
+        
+        result = DirectCode.Divide(Binary.FromUnsignedInt(56), Binary.FromUnsignedInt(24));
+        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)2.33333);
+
+        result = DirectCode.Divide(Binary.FromUnsignedInt(196), Binary.FromUnsignedInt(3));
+        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)65.33333);
+        
+        result = DirectCode.Divide(Binary.FromUnsignedInt(10), Binary.FromUnsignedInt(3));
+        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)3.33333);
+        
+        result = DirectCode.Divide(Binary.FromUnsignedInt(6), Binary.FromUnsignedInt(4));
+        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)1.50000);
+        
+        result = DirectCode.Divide(Binary.FromUnsignedInt(15), Binary.FromUnsignedInt(2));
+        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)7.50000);
+        
+        result = DirectCode.Divide(Binary.FromUnsignedInt(1), Binary.FromUnsignedInt(3));
+        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)0.33333);
+        
+        result = DirectCode.Divide(Binary.FromUnsignedInt(1), Binary.FromUnsignedInt(125));
+        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)0.00800);
+
+        result = DirectCode.Divide(10, -3);
+        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result, true), (double)-3.33333);
+
+        try
+        {
+            result = DirectCode.Divide(10, 0);
+            Assert.Fail();
+        }
+        catch (DivideByZeroException)
+        {
+        }
     }
 }

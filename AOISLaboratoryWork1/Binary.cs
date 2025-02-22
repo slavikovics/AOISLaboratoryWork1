@@ -83,6 +83,12 @@ public static class Binary
         return result;
     }
 
+    public static string Trim(string input)
+    {
+        if (input.IndexOf("1", StringComparison.Ordinal) == -1) return "0";
+        return input.Substring(input.IndexOf("1", StringComparison.Ordinal));
+    }
+
     public static string Sum(int firstArgument, int secondArgument)
     {
         return Sum(Binary.FromUnsignedInt(firstArgument), Binary.FromUnsignedInt(secondArgument));

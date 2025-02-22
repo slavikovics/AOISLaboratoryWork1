@@ -40,4 +40,10 @@ public sealed class AdditionalCodeTests
             }
         }
     }
+
+    [TestMethod]
+    public void AdditionalCodeOtherTests()
+    {
+        AdditionalCode.Sum("10", AdditionalCode.ConvertDirectCodeToAdditionalCode("110"));
+    }
 }
