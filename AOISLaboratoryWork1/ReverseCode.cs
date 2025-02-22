@@ -7,7 +7,7 @@ public static class ReverseCode
         return ConvertDirectCodeToReverseCode(DirectCode.ConvertIntegerToDirectCode(input));
     }
 
-    private static string ConvertDirectCodeToReverseCode(string input)
+    public static string ConvertDirectCodeToReverseCode(string input)
     {
         if (input[0] == '0') return input;
         return input[0] + Binary.Invert(input.Substring(1));

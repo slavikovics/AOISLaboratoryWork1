@@ -14,6 +14,11 @@ public static class AdditionalCode
         return DirectCode.ConvertDirectCodeToInteger(Binary.Sum("1" + Binary.Invert(input.Substring(1)), DirectCode.ConvertIntegerToDirectCode(1)));
     }
 
+    public static string ConvertDirectCodeToAdditionalCode(string directCode)
+    { 
+        return Binary.Sum(ReverseCode.ConvertDirectCodeToReverseCode(directCode), 1);
+    }
+
     public static string Sum(string firstArgument, string secondArgument)
     {
         return Binary.Sum(firstArgument, secondArgument, true);

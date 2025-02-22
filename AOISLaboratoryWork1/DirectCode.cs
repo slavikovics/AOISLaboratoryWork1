@@ -75,14 +75,25 @@ public static class DirectCode
         return result;
     }
 
-    private static string FindSmallestForDivision(string firstArgument, string secondArgument)
+    public static string MakeNegative(string input)
+    {
+        return "1" + input.Substring(1);
+    }
+
+    public static bool IsNegative(string input)
+    {
+        if (input[0] == '1') return true;
+        return false;
+    }
+
+    public static string FindSmallestForDivision(string firstArgument, string secondArgument)
     {
         string result = "";
         
         foreach (char digit in firstArgument)
         {
             result += digit;
-            if (Convert.ToInt32(result) >= Convert.ToInt32(secondArgument)) return result;
+            if (Binary.ConvertBinaryToInteger(result) >= Binary.ConvertBinaryToInteger(secondArgument)) return result;
         }
 
         return "";
@@ -90,28 +101,27 @@ public static class DirectCode
 
     public static string Divide(string firstArgument, string secondArgument)
     {
+        // TODO write O check and add sign check somewhere
+        
         string firstSelection = FindSmallestForDivision(firstArgument, secondArgument);
-        string remaining = (Convert.ToInt32(firstSelection) - Convert.ToInt32(secondArgument)).ToString();
+        string remaining = AdditionalCode.Sum(firstSelection, AdditionalCode.ConvertDirectCodeToAdditionalCode(MakeNegative(secondArgument))).Substring(1);
         string numberEnding = firstArgument.Substring(firstSelection.Length);
-        string result = (Convert.ToInt32(firstSelection) / Convert.ToInt32(secondArgument)).ToString(); 
+        string result = "";
+        if (firstSelection != "") result = "1";
+        else result = "0";
         bool wasAccuracyAchieved = false;
         bool hasDot = false;
         
         while (!wasAccuracyAchieved)
         {
-            result += DivisionBody(ref remaining, ref numberEnding, secondArgument, hasDot);
-            if (result.IndexOf(".", StringComparison.Ordinal) != -1) hasDot = true;
-            
-            if (hasDot && result.Substring(result.IndexOf(",", StringComparison.Ordinal) + 1).Length >= 5)
-            {
-                wasAccuracyAchieved = true;
-            }
+            result += DivisionBody(ref remaining, ref numberEnding, secondArgument, ref hasDot);
+            if (hasDot && result.Substring(result.IndexOf(".", StringComparison.Ordinal) + 1).Length >= 5) wasAccuracyAchieved = true;
         }
         
         return result;
     }
 
-    private static string DivisionBody(ref string remaining, ref string numberEnding, string secondArgument, bool hasDot)
+    private static string DivisionBody(ref string remaining, ref string numberEnding, string secondArgument, ref bool hasDot)
     {
         string result = "";
         string number = remaining;
@@ -119,23 +129,27 @@ public static class DirectCode
         if (numberEnding.Length == 0)
         {
             number += "0";
-            if (!hasDot) result += ".";
+            if (!hasDot)
+            {
+                result += ".";
+                hasDot = true;
+            }
         }
         else
         {
             number += numberEnding[0];
             numberEnding = numberEnding.Substring(1);
         }
-        
-        string partialResult = (Convert.ToInt32(number) - Convert.ToInt32(secondArgument)).ToString();
-        if (Convert.ToInt32(partialResult) < 0)
+
+        string partialResult = AdditionalCode.Sum(number, AdditionalCode.ConvertDirectCodeToAdditionalCode(MakeNegative(secondArgument)));
+        if (IsNegative(partialResult))
         {
             remaining = number;
             return result + "0";
         }
 
-        remaining = (Convert.ToInt32(number) - Convert.ToInt32(partialResult)).ToString();
-        result += partialResult;
+        remaining = AdditionalCode.Sum(number, AdditionalCode.ConvertDirectCodeToAdditionalCode(MakeNegative(partialResult))).Substring(1);
+        result += partialResult.Substring(1);
         
         return result;
     }

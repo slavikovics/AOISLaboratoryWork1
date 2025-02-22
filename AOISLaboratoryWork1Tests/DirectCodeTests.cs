@@ -45,4 +45,19 @@ public sealed class DirectCodeTests
         Assert.AreEqual(DirectCode.FindDigitsNumber(567), 3);
         Assert.AreEqual(DirectCode.FindDigitsNumber(4444), 4);
     }
+
+    [TestMethod]
+    public void FindSmallestForDivisionTest()
+    {
+        Assert.AreEqual(DirectCode.FindSmallestForDivision("1010", "10"), "10");
+        Assert.AreEqual(DirectCode.FindSmallestForDivision("1010", "101"), "101");
+    }
+    
+    [TestMethod]
+    public void DivisionTest()
+    {
+        string result1 = DirectCode.Divide(Binary.FromUnsignedInt(8), Binary.FromUnsignedInt(2));
+        string result2 = DirectCode.Divide(Binary.FromUnsignedInt(56), Binary.FromUnsignedInt(24));
+        string result3 = DirectCode.Divide("1010","10");
+    }
 }
