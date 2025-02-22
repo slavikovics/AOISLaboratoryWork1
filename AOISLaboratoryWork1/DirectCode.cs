@@ -75,29 +75,67 @@ public static class DirectCode
         return result;
     }
 
-    public static double Division(long firstArgument, long secondArgument)
+    private static string FindSmallestForDivision(string firstArgument, string secondArgument)
     {
-        double result = 0;
-        long accuracy = (long)Math.Pow(10, 5);
-        firstArgument *= accuracy;
-        long subNumber = 0;
-        long power = 0;
-
-        while (firstArgument >= secondArgument)
+        string result = "";
+        
+        foreach (char digit in firstArgument)
         {
-            long digitsCount = FindDigitsNumber(firstArgument);
-            
-            for (int i = 1; i <= digitsCount; i++)
-            {
-                power = digitsCount - i;
-                subNumber = firstArgument / (long)Math.Pow(10, power);
-                if (subNumber >= secondArgument) break;
-            }
-
-            result *= 10;
-            result += (long)(subNumber / secondArgument);
-            firstArgument -= ((long)Math.Pow(10, power) * (long)(subNumber / secondArgument) * secondArgument);
+            result += digit;
+            if (Convert.ToInt32(result) >= Convert.ToInt32(secondArgument)) return result;
         }
+
+        return "";
+    }
+
+    public static string Divide(string firstArgument, string secondArgument)
+    {
+        string firstSelection = FindSmallestForDivision(firstArgument, secondArgument);
+        string remaining = (Convert.ToInt32(firstSelection) - Convert.ToInt32(secondArgument)).ToString();
+        string numberEnding = firstArgument.Substring(firstSelection.Length);
+        string result = (Convert.ToInt32(firstSelection) / Convert.ToInt32(secondArgument)).ToString(); 
+        bool wasAccuracyAchieved = false;
+        bool hasDot = false;
+        
+        while (!wasAccuracyAchieved)
+        {
+            result += DivisionBody(ref remaining, ref numberEnding, secondArgument, hasDot);
+            if (result.IndexOf(".", StringComparison.Ordinal) != -1) hasDot = true;
+            
+            if (hasDot && result.Substring(result.IndexOf(",", StringComparison.Ordinal) + 1).Length >= 5)
+            {
+                wasAccuracyAchieved = true;
+            }
+        }
+        
+        return result;
+    }
+
+    private static string DivisionBody(ref string remaining, ref string numberEnding, string secondArgument, bool hasDot)
+    {
+        string result = "";
+        string number = remaining;
+        
+        if (numberEnding.Length == 0)
+        {
+            number += "0";
+            if (!hasDot) result += ".";
+        }
+        else
+        {
+            number += numberEnding[0];
+            numberEnding = numberEnding.Substring(1);
+        }
+        
+        string partialResult = (Convert.ToInt32(number) - Convert.ToInt32(secondArgument)).ToString();
+        if (Convert.ToInt32(partialResult) < 0)
+        {
+            remaining = number;
+            return result + "0";
+        }
+
+        remaining = (Convert.ToInt32(number) - Convert.ToInt32(partialResult)).ToString();
+        result += partialResult;
         
         return result;
     }

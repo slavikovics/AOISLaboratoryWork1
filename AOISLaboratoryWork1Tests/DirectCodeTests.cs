@@ -45,10 +45,4 @@ public sealed class DirectCodeTests
         Assert.AreEqual(DirectCode.FindDigitsNumber(567), 3);
         Assert.AreEqual(DirectCode.FindDigitsNumber(4444), 4);
     }
-
-    [TestMethod]
-    public void DivisionTest()
-    {
-        double result = DirectCode.Division(1101, 10);
-    }
 }
