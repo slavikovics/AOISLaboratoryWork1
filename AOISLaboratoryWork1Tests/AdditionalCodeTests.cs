@@ -26,7 +26,6 @@ public sealed class AdditionalCodeTests
     [TestMethod]
     public void AdditionalCodeSumTest()
     {
-        // TODO fix for all numbers + isInverted should represent both numbers (now only negative)
         Assert.AreEqual(AdditionalCode.ConvertAdditionalCodeToInteger(AdditionalCode.Sum(4, 4)), 8);
         
         for (int i = -100; i < 100; i++)
