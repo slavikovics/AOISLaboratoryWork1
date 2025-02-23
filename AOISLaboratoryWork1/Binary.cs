@@ -33,6 +33,27 @@ public static class Binary
         return result;
     }
 
+    public static string FindFractionalPart(double fractionalPart, int maxCount = 32)
+    {
+        if (fractionalPart >= 1) throw new ArgumentException("Argument must represent a fractional part.");
+        string result = "";
+
+        while (maxCount > 0)
+        {
+            fractionalPart *= 2;
+            if (fractionalPart >= 1)
+            {
+                result += '1';
+                fractionalPart -= 1;
+            }
+            else result += '0';
+
+            maxCount--;
+        }
+        
+        return result;
+    }
+
     public static string FitInBytes(string input, bool isInverted = false)
     {
         int numberOfZeroes = 8 - input.Length % 8;

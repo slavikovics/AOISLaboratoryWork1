@@ -82,4 +82,12 @@ public sealed class BinaryTests
         Assert.AreEqual(Binary.ConvertBinaryToInteger("0111000"), 56);
         Assert.AreEqual(Binary.ConvertBinaryToInteger("000111000"), 56);
     }
+
+    [TestMethod]
+    public void FindFractionalPartTest()
+    {
+        Assert.AreEqual(Binary.FindFractionalPart(0.625, 3), "101");
+        Assert.AreEqual(Binary.FindFractionalPart(0.111, 8), "00011100");
+        Assert.AreEqual(Binary.FindFractionalPart(0.0, 9), "000000000");
+    }
 }
