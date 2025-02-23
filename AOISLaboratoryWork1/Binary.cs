@@ -41,10 +41,10 @@ public static class Binary
         return new string('0', numberOfZeroes) + input;
     }
 
-    public static string FitInBytes(string input, int lengthInBytes, bool isInverted = false)
+    public static string FitInBytes(string input, int lengthInBits, bool isInverted = false)
     {
-        if (isInverted) return new string(input[0], lengthInBytes - input.Length) + input;
-        return new string('0', lengthInBytes - input.Length) + input;
+        if (isInverted) return new string(input[0], lengthInBits - input.Length) + input;
+        return new string('0', lengthInBits - input.Length) + input;
     }
 
     public static string Sum(string firstArgument, string secondArgument, bool isInverted = false)
