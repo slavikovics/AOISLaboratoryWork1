@@ -15,13 +15,22 @@ public class FloatingPointNumber
     public FloatingPointNumber(double value)
     {
         Sign = value < 0 ? "1" : "0";
-        Mantissa = FindLeftPart(value);
-        int currentDotLocation = Mantissa.Length;
-        //Exponent = Binary.FitInBytes(Binary.FromUnsignedInt(Mantissa.Length - 1 + Bias), 8);
-        //Mantissa = Mantissa.Substring(1);
-        Mantissa += FindRightPart(value, MantissaLength - Mantissa.Length);
-        
-        
+        FindMantissa(value);
+    }
+
+    private void FindMantissa(double value)
+    {
+        value = Math.Abs(value);
+        string result = FindLeftPart(value);
+        int startDotIndex = result.Length;
+        result += FindRightPart(value, 255);
+        int newDotIndex = result.IndexOf("1", StringComparison.Ordinal) + 1;
+        int power = startDotIndex - newDotIndex;
+        result = result.Substring(0, startDotIndex);
+        result += FindRightPart(value, 23 - power);
+        result = result.Substring(result.IndexOf("1", StringComparison.Ordinal) + 1, 23);
+        Mantissa = result;
+        Exponent = Binary.FitInBytes(Binary.FromUnsignedInt(power + Bias), 8);
     }
 
     private static string FindLeftPart(double value)

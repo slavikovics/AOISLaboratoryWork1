@@ -41,7 +41,7 @@ public static class Binary
         while (maxCount > 0)
         {
             fractionalPart *= 2;
-            if (fractionalPart >= 1)
+            if (fractionalPart >= 1 || (fractionalPart >= 0.5 && maxCount == 1))
             {
                 result += '1';
                 fractionalPart -= 1;
