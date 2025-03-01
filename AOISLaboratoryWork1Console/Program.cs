@@ -164,7 +164,7 @@ static class Program
         double resultInDouble = fp3.ConvertToDecimal();
         
         Console.WriteLine($"First in IEEE-754: {fp1}");
-        Console.WriteLine($"Second in IEEE-754: {fp1}");
+        Console.WriteLine($"Second in IEEE-754: {fp2}");
         Console.WriteLine($"Result: {fp3}");
         Console.WriteLine($"Result: {resultInDouble}");
         Console.WriteLine();
