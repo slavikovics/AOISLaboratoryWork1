@@ -7,7 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49a2b899-3498-449a-bbe2-b3ab22faa70f" name="Changes" comment="" />
+    <list default="true" id="49a2b899-3498-449a-bbe2-b3ab22faa70f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AOISLaboratoryWork1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AOISLaboratoryWork1/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,11 +68,11 @@
 }</component>
   <component name="RunManager">
     <configuration name="AOISLaboratoryWork1Console" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/AOISLaboratoryWork1Console/bin/Debug/net9.0/AOISLaboratoryWork1Console.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/AOISLaboratoryWork1Console/bin/Debug/net9.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="1" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/AOISLaboratoryWork1Console/AOISLaboratoryWork1Console.csproj" />
@@ -78,7 +80,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net9.0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -107,6 +109,8 @@
       <workItem from="1740808993226" duration="3330000" />
       <workItem from="1741948166176" duration="65000" />
       <workItem from="1741948601609" duration="153000" />
+      <workItem from="1741990533793" duration="246000" />
+      <workItem from="1742018838579" duration="4484000" />
     </task>
     <task id="LOCAL-00001" summary="Adding project files">
       <option name="closed" value="true" />
