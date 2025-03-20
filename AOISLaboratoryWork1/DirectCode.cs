@@ -94,7 +94,7 @@ public static class DirectCode
             result += Math.Pow(2, i) * Convert.ToInt32(input[currentPosition].ToString());
             currentPosition++;
         }
-        result = Math.Round(result, 5);
+        //result = Math.Round(result, 5);
 
         return result * multiplier;
     }

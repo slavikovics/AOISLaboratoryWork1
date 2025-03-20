@@ -57,31 +57,31 @@ public sealed class DirectCodeTests
     public void DivisionTest()
     {
         string result = DirectCode.Divide(Binary.FromUnsignedInt(8), Binary.FromUnsignedInt(2));
-        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)4.00000);
+        Assert.AreEqual(Math.Round(DirectCode.ConvertDivisionResultToDouble(result), 5), (double)4.00000);
         
         result = DirectCode.Divide(Binary.FromUnsignedInt(56), Binary.FromUnsignedInt(24));
-        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)2.33333);
+        Assert.AreEqual(Math.Round(DirectCode.ConvertDivisionResultToDouble(result), 5), (double)2.33333);
 
         result = DirectCode.Divide(Binary.FromUnsignedInt(196), Binary.FromUnsignedInt(3));
-        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)65.33333);
+        Assert.AreEqual(Math.Round(DirectCode.ConvertDivisionResultToDouble(result), 5), (double)65.33333);
         
         result = DirectCode.Divide(Binary.FromUnsignedInt(10), Binary.FromUnsignedInt(3));
-        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)3.33333);
+        Assert.AreEqual(Math.Round(DirectCode.ConvertDivisionResultToDouble(result), 5), (double)3.33333);
         
         result = DirectCode.Divide(Binary.FromUnsignedInt(6), Binary.FromUnsignedInt(4));
-        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)1.50000);
+        Assert.AreEqual(Math.Round(DirectCode.ConvertDivisionResultToDouble(result), 5), (double)1.50000);
         
         result = DirectCode.Divide(Binary.FromUnsignedInt(15), Binary.FromUnsignedInt(2));
-        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)7.50000);
+        Assert.AreEqual(Math.Round(DirectCode.ConvertDivisionResultToDouble(result), 5), (double)7.50000);
         
         result = DirectCode.Divide(Binary.FromUnsignedInt(1), Binary.FromUnsignedInt(3));
-        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)0.33333);
+        Assert.AreEqual(Math.Round(DirectCode.ConvertDivisionResultToDouble(result), 5), (double)0.33333);
         
         result = DirectCode.Divide(Binary.FromUnsignedInt(1), Binary.FromUnsignedInt(125));
-        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result), (double)0.00800);
+        Assert.AreEqual(Math.Round(DirectCode.ConvertDivisionResultToDouble(result), 5), (double)0.00800);
 
         result = DirectCode.Divide(10, -3);
-        Assert.AreEqual(DirectCode.ConvertDivisionResultToDouble(result, true), (double)-3.33333);
+        Assert.AreEqual(Math.Round(DirectCode.ConvertDivisionResultToDouble(result, true), 5), (double)-3.33333);
 
         try
         {

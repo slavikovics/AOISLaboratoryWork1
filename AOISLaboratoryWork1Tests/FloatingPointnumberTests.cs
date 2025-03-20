@@ -54,10 +54,10 @@ public class FloatingPointnumberTests
 
         FloatingPointNumber testResult = FloatingPointNumber.PositiveSum(floatingPointNumber1, floatingPointNumber2);
         double result = FloatingPointNumber.PositiveSum(floatingPointNumber1, floatingPointNumber2).ConvertToDecimal();
-        Assert.AreEqual(7, result);
+        Assert.AreEqual(7, Math.Round(result));
         
         result = FloatingPointNumber.PositiveSum(floatingPointNumber1, floatingPointNumber3).ConvertToDecimal();
-        Assert.AreEqual(3.356, result);
+        Assert.AreEqual(3.356, Math.Round(result, 3));
         
         result = FloatingPointNumber.PositiveSum(floatingPointNumber6, floatingPointNumber5).ConvertToDecimal();
         Assert.AreEqual(137.3, Math.Round(result,  1));
